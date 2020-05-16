@@ -1,0 +1,51 @@
+# Project exclude paths
+/.gradle/
+/Problems/Alphabetical order/out/
+/Problems/Alphabetical order/out/production/classes/
+/Problems/Boxes/out/
+/Problems/Boxes/out/production/classes/
+/Problems/Check if an array contains two numbers/out/
+/Problems/Check if an array contains two numbers/out/production/classes/
+/Problems/Check if an array is sorted ascending/out/
+/Problems/Check if an array is sorted ascending/out/production/classes/
+/Problems/Compression algorithm/out/
+/Problems/Compression algorithm/out/production/classes/
+/Problems/Count how many times a number occurs/out/
+/Problems/Count how many times a number occurs/out/production/classes/
+/Problems/Cutting out the middle of a string/out/
+/Problems/Cutting out the middle of a string/out/production/classes/
+/Problems/Cyclically shifting elements/out/
+/Problems/Cyclically shifting elements/out/production/classes/
+/Problems/Double characters/out/
+/Problems/Double characters/out/production/classes/
+/Problems/Find the first occurrence of the word  the/out/
+/Problems/Find the first occurrence of the word  the/out/production/classes/
+/Problems/Generating passwords/out/
+/Problems/Generating passwords/out/production/classes/
+/Problems/Individual taxes/out/
+/Problems/Individual taxes/out/production/classes/
+/Problems/Move the first N characters/out/
+/Problems/Move the first N characters/out/production/classes/
+/Problems/Palindrome/out/
+/Problems/Palindrome/out/production/classes/
+/Problems/Parse url/out/
+/Problems/Parse url/out/production/classes/
+/Problems/Piece of alphabet/out/
+/Problems/Piece of alphabet/out/production/classes/
+/Problems/Right Rotation/out/
+/Problems/Right Rotation/out/production/classes/
+/Problems/Sum array elements greater than a value/out/
+/Problems/Sum array elements greater than a value/out/production/classes/
+/Problems/The longest ascending sequence/out/
+/Problems/The longest ascending sequence/out/production/classes/
+/Problems/The lucky ticket/out/
+/Problems/The lucky ticket/out/production/classes/
+/Problems/The maximum pairwise product/out/
+/Problems/The maximum pairwise product/out/production/classes/
+/Problems/Triples/out/
+/Problems/Triples/out/production/classes/
+/Problems/Two numbers never occur to each other/out/
+/Problems/Two numbers never occur to each other/out/production/classes/
+/Readability Score/task/build/
+/Readability Score/task/out/
+/Readability Score/task/out/production/classes/

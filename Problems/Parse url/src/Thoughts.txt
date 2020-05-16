@@ -1,0 +1,15 @@
+13 May 2020 11:11PM
+There are many ways to solve this problem.
+Some ways  are
+1. Use the split() method to split the string based on the "?" character first.
+    This will split the string between the URL and the meta data.
+    Take the meta data portion (which will be the pass=.... and further split this
+    based on the "&" character.
+    This will give you and array of meta data strings
+    pass=1234
+    port=8080 etc..
+    Take these strings and further split them by "=" to get the key:value pairs
+2. Use regular expression to find the word based on key names.  Use boundary
+    expression to search up to i.e one boundary key would be "&" character.
+3. Use the indexOf(..) method to find the characters which define the required
+    string in the key part.
