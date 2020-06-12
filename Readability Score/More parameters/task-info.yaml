@@ -343,6 +343,146 @@ files:
         }
     }
   learner_created: false
+- name: src/readability/Readability Test
+  visible: true
+  learner_created: true
+- name: src/readability/Main.java
+  visible: true
+  text: |
+    package readability;
+
+    import java.io.File;
+    import java.io.IOException;
+    import java.nio.file.Files;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.Scanner;
+    import java.util.regex.Matcher;
+    import java.util.regex.Pattern;
+    import java.util.stream.Stream;
+
+
+    public class Main {
+        //private static Scanner readIn = new Scanner(System.in);
+
+        public static void main(String[] args) {
+
+    //        String readSentence = "";
+    //        int punctuationCount = 0;
+    //        double averageWordCount = 0;
+            double characters = 0D;
+            double words = 0D;
+            double automatedReadabilityIndex = 1;
+            String punctuation = "[.|!|?]";
+            int numberOfPunctuationMarks = 0;
+
+            //Create a file object to read.
+            //String fileIn = "D:\\My Stuff\\Software Projects\\JetBrains-HyperSkill\\Projects\\Readability Score\\Readability Score\\task\\src\\readability\\" + args[0];
+            //File fileRead = new File("Readability Score/task/src/readability/" + args[0]);
+            File fileRead = new File(args[0]);
+
+            System.out.println(fileRead.getAbsolutePath());
+
+            try {
+                List<String> lines = readFile(fileRead);
+
+                Pattern regex = Pattern.compile(punctuation, Pattern.MULTILINE);
+                Matcher matcher = regex.matcher(lines.stream().reduce((x,y) -> x + y).get());
+                while (matcher.find()) {
+                    numberOfPunctuationMarks++;
+                }
+                //Split the text into sentences (separators are "full stops, Exclamation Mark and Question Mark"
+                String[] sentences = lines.stream().
+                        reduce((x, y) -> x.concat(y)).
+                        map(element -> element.split(punctuation)).
+                        get();
+
+                for(String elements : sentences) {
+                    String[] eachWord = elements.trim().split(" ");
+                    words += eachWord.length;
+                    characters += Stream.of(eachWord).mapToInt(character -> character.length()).sum();
+                }
+                //Calculate the readability index which indicates the reading level of an individual
+                //Since the above text was split at the punctuation Marks - we need to add this to the get the total number
+                //of Characters.
+                int totalCharacters = (int) characters + numberOfPunctuationMarks;
+
+                automatedReadabilityIndex = 4.71 * (totalCharacters / words) + 0.5 * (words/sentences.length) - 21.43;
+
+                System.out.println("Words: " + (int) words);
+                System.out.println("Sentences: " + sentences.length);
+                System.out.println("Characters:" + totalCharacters);
+                System.out.printf("The score is: %.2f\n", automatedReadabilityIndex);
+
+                final int indexScore = (int) Math.ceil(automatedReadabilityIndex);
+                System.out.println("This text should be understood by " + gradeLevel(indexScore) + " year olds.");
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                //readIn.close();
+            }
+
+            /**************************OLD CODE FROM PROJECT 1***************************/
+            //Count the number of Punctuation of type ".?!" exits in the sentence
+    //        Pattern pattern = Pattern.compile("[.?!]", Pattern.MULTILINE);
+    //        Matcher match = pattern.matcher(readSentence);
+    //
+    //        while (match.find()) {
+    //            punctuationCount++;
+    //        }
+
+            //Make sure the Punctuation count is > 0.  If there is one
+            //sentence regardless of whether there is a punctuation mark, the
+            //punctuationCount must be at least 1.
+    //        punctuationCount = punctuationCount == 0 ? 1 : punctuationCount;
+    //        double numberOfWordsInSentence = readSentence.split(" ").length;
+    //        averageWordCount = numberOfWordsInSentence / punctuationCount;
+    //        System.out.println(averageWordCount <= 10.0 ? "EASY" : "HARD");
+
+        }
+
+        /*
+        *@param File : readFile
+        * Read the I/P file into a list
+         */
+        public static List<String> readFile(File readFile) throws IOException {
+            return Files.readAllLines(readFile.toPath());
+        }
+
+        public static String gradeLevel(int indexScore) {
+            //A List of all the grades
+            Map<Integer,String> gradeLevel = new HashMap<>();
+            gradeLevel.put(1,"5-6");
+            gradeLevel.put(2,"6-7");
+            gradeLevel.put(3,"7-9");
+            gradeLevel.put(4,"9-10");
+            gradeLevel.put(5,"10-11");
+            gradeLevel.put(6 ,"11-12");
+            gradeLevel.put(7,"12-13");
+            gradeLevel.put(8,"13-14");
+            gradeLevel.put(9,"14-15");
+            gradeLevel.put(10,"15-16");
+            gradeLevel.put(11,"16-17");
+            gradeLevel.put(12,"17-18");
+            gradeLevel.put(13,"18-24");
+            gradeLevel.put(14,"24+");
+
+            return gradeLevel.entrySet().stream().filter(element -> element.getKey().compareTo(indexScore) == 0).findFirst().get().getValue();
+        }
+
+    }
+  learner_created: true
+- name: src/readability/in.txt
+  visible: true
+  text: |-
+    java Main in.txt
+    The text is:
+    Readability is the ease with which a reader can understand a written text. In natural language, the readability of text depends on its content and its presentation. Researchers have used various factors to measure readability. Readability is more than simply legibility, which is a measure of how easily a reader can distinguish individual letters or characters from each other. Higher readability eases reading effort and speed for any reader, but it is especially important for those who do not have high reading comprehension. In readers with poor reading comprehension, raising the readability level of a text from mediocre to good can make the difference between success and failure
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/39/stages/208/implement
-status: Unchecked
+status: Solved
 record: -1

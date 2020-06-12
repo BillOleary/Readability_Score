@@ -188,6 +188,36 @@ files:
         }
     }
   learner_created: false
+- name: src/readability/Main.java
+  visible: true
+  text: "package readability;\n\nimport java.util.Scanner;\nimport java.util.regex.Matcher;\n\
+    import java.util.regex.Pattern;\n\npublic class Main {\n\n    public static void\
+    \ main(String[] args) {\n\n        Scanner readIn = new Scanner(System.in);\n\
+    \        String readSentence = \"\";\n        int punctuationCount = 0;\n    \
+    \    double averageWordCount = 0;\n\n        //OLD Way by counting the words in\
+    \ a sentence.\n        // int count = 0;\n//        String[] read = readIn.nextLine().split(\"\
+    \");\n//        count += read.length;\n//        System.out.println(count <= 100\
+    \ ? \"EASY\" : \"HARD\");\n        \n        //19 May 2020 18:12\n        //Read\
+    \ the sentence (if on multiple lines)\n        while (readIn.hasNext()) {\n  \
+    \          readSentence += readIn.nextLine();\n        }\n        \n        //Count\
+    \ the number of Punctuation of type \".?!\" exits in the sentence\n        Pattern\
+    \ pattern = Pattern.compile(\"[.?!]\", Pattern.MULTILINE);\n        Matcher match\
+    \ = pattern.matcher(readSentence);\n\n        while (match.find()) {\n       \
+    \     punctuationCount++;\n        }\n\n        //Make sure the Punctuation count\
+    \ is > 0.  If there is one\n        //sentence regardless of whether there is\
+    \ a punctuation mark, the\n        //punctuationCount must be at least 1.\n  \
+    \      punctuationCount = punctuationCount == 0 ? 1 : punctuationCount;\n\n  \
+    \      double numberOfWordsInSentence = readSentence.split(\" \").length;\n  \
+    \      averageWordCount = numberOfWordsInSentence / punctuationCount;\n\n    \
+    \    System.out.println(averageWordCount <= 10.0 ? \"EASY\" : \"HARD\");\n\n \
+    \   }\n}\n"
+  learner_created: true
+- name: src/readability/in.txt
+  visible: true
+  learner_created: true
+- name: src/readability/Readability Test
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/39/stages/207/implement
-status: Unchecked
-record: -1
+status: Solved
+record: 3
